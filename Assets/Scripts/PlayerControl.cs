@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
     public Rigidbody SphereBall;
+    public AudioClip AC;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,4 +20,21 @@ public class PlayerControl : MonoBehaviour
         float MoveVert = Input.GetAxis("Vertical");
         SphereBall.AddForce(new Vector3(MoveHori,0,MoveVert) * 2 );
     }
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    //Debug.Log("Crash!");
+    //    if(collision.gameObject.tag == "Item")
+    //    {
+    //        Destroy(collision.gameObject);
+    //    }
+    //}
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Item")
+        {
+            Destroy(other.gameObject);
+            AudioSource.PlayClipAtPoint(AC, transform.localPosition);
+        }
+    }
+
 }
