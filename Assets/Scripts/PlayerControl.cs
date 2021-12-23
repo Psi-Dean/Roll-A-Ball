@@ -25,7 +25,7 @@ public class PlayerControl : MonoBehaviour
     {
         float MoveHori = Input.GetAxis("Horizontal");
         float MoveVert = Input.GetAxis("Vertical");
-        SphereBall.AddForce(new Vector3(MoveHori,0,MoveVert) * 2 );
+        SphereBall.AddForce(new Vector3(MoveHori,0,MoveVert) * 3 );
         if (timer > 0)
         {
             timer -= Time.deltaTime;
